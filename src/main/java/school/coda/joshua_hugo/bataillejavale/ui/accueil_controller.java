@@ -2,10 +2,23 @@ package school.coda.joshua_hugo.bataillejavale.ui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import school.coda.joshua_hugo.bataillejavale.HelloApplication;
+
+import java.io.IOException;
 
 public class accueil_controller {
+
     @FXML
-    protected void lancerPartie(ActionEvent event) {
-        System.out.println("Bouton cliqué ! L'écran de placement des navires va charger...");
+    protected void onNouvellePartieClick(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("grid.fxml"));
+        Scene sceneDePlacement = new Scene(fxmlLoader.load(), 800, 600);
+
+        Stage fenetre = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        fenetre.setScene(sceneDePlacement);
+        fenetre.show();
     }
 }

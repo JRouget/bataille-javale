@@ -13,8 +13,8 @@
         </font>
     </Label>
 
-    <Button text="Nouvelle Partie" onAction="#lancerPartie" prefHeight="50.0" prefWidth="200.0" />
+    <Button text="Nouvelle Partie" onAction="#onNouvellePartieClick"/>
 
-    <Label text="Un projet réalisé par Joshua et Hugo" textFill="gray" />
+    <Label text="Copyright by Joshua, Hugo et Florian" textFill="gray" />
 
 </VBox>

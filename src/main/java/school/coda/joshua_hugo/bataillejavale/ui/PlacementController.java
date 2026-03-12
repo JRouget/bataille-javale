@@ -4,26 +4,37 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import school.coda.joshua_hugo.bataillejavale.map.Grille;
+import school.coda.joshua_hugo.bataillejavale.moteur.GameManager;
 import school.coda.joshua_hugo.bataillejavale.navires.Navire;
-import school.coda.joshua_hugo.bataillejavale.navires.TypeNavire;
 
 public class PlacementController {
 
     @FXML
     private GridPane grilleOcean;
 
-    private Grille maGrille = new Grille();
+    @FXML
+    private Button boutonRotation;
+
+    private GameManager gameManager = new GameManager();
 
     private Button[][] boutonsGrille = new Button[10][10];
 
-    private Navire navireEnCours = new Navire(TypeNavire.PORTE_AVION);
-
     private boolean estHorizontal = true;
-
 
     @FXML
     public void initialize() {
         construireGrilleVisuelle();
+    }
+
+    @FXML
+    protected void onBoutonRotationClick() {
+        estHorizontal = !estHorizontal;
+
+        if (estHorizontal) {
+            boutonRotation.setText("Sens : Horizontal ➡️");
+        } else {
+            boutonRotation.setText("Sens : Vertical ⬇️");
+        }
     }
 
     private void construireGrilleVisuelle() {
@@ -52,20 +63,26 @@ public class PlacementController {
 
     private void tenterPlacementBateau(int x, int y) {
 
-        boolean autorisationDuMoteur = maGrille.placerNavire(navireEnCours, y, x, estHorizontal);
+        Navire navireAposer = gameManager.getBateauActuel();
 
-        if (autorisationDuMoteur == true) {
+        if (navireAposer == null) {
+            System.out.println("Tous les bateaux sont déjà placés !");
+            return;
+        }
 
-            int taille = navireEnCours.getType().getTaille();
+        Grille grilleDuJoueur = gameManager.getPlayerGrid();
 
+        boolean autorisation = grilleDuJoueur.placerNavire(navireAposer, y, x, estHorizontal);
+
+        if (autorisation) {
+            int taille = navireAposer.getType().getTaille();
             for (int i = 0; i < taille; i++) {
-
                 int caseX = estHorizontal ? x + i : x;
                 int caseY = estHorizontal ? y : y + i;
-
                 boutonsGrille[caseX][caseY].setStyle("-fx-background-color: #808080; -fx-border-color: #333333;");
             }
-            System.out.println(navireEnCours.getType().getNom() + " placé avec succès !");
+
+            gameManager.preparerProchainBateau();
 
         } else {
             System.out.println("Placement impossible ici !");
