@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="school.coda.joshua_hugo.bataillejavale.ui.ViewController">
+
+    <Label text="Placez vos navires" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <GridPane fx:id="grilleOcean" alignment="CENTER" hgap="1" vgap="1" />
+
+</VBox>
