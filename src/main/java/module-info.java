@@ -6,4 +6,6 @@ module school.coda.joshua_hugo.bataillejavale {
 
     opens school.coda.joshua_hugo.bataillejavale to javafx.fxml;
     exports school.coda.joshua_hugo.bataillejavale;
+
+    opens school.coda.joshua_hugo.bataillejavale.ui to javafx.fxml;
 }
