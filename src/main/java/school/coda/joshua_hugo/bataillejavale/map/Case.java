@@ -12,6 +12,10 @@ public class Case {
         this.aEteTouchee = false;
     }
 
+    public boolean isAEteTouchee() {
+        return this.aEteTouchee;
+    }
+
     public boolean estVide() {
         return this.navireDessus == null;
     }

@@ -52,7 +52,7 @@ public class GameManager {
 
     }
 
-    public void jeuOrdinateur(){
+    public void bateauOrdinateur(){
 
         TypeNavire[] tousLesTypes = TypeNavire.values();//Liste de tout les bateau et type
 
@@ -93,6 +93,34 @@ public class GameManager {
 
         }
 
+    }
+
+    public void tirOrdinateur() {
+
+        boolean tirValide = false;
+        int ligne = 0;
+        int colonne = 0;
+
+        // On boucle tant que le tir est pas valide
+        while (tirValide == false) {
+
+            // coordonnées de tir
+            ligne = (int) (Math.random() * 10);
+            colonne = (int) (Math.random() * 10);
+
+            // Si c'est déjà touché
+            if (playerGrid.estDejaTouchee(ligne, colonne) == false) {
+
+                // Le tir à fonctionné
+                tirValide = true;
+
+            } else {
+                //Echec, la boucle reboucle
+                System.out.println("Déjà tiré en " + ligne + "," + colonne + ". Je re-tente...");
+            }
+        }
+
+        System.out.println("L'ordinateur tire enfin en : " + ligne + " " + colonne);
     }
 
     public Grille getPlayerGrid() {

@@ -15,6 +15,15 @@ public class Grille {
                 plateau[ligne][colonne] = new Case();
             }
         }
+
+    }
+
+    public boolean estDejaTouchee(int ligne, int colonne) {
+        // trouve quelle case
+        Case laCase = plateau[ligne][colonne];
+
+        // Si elle a été touché
+        return laCase.isAEteTouchee();
     }
 
     public boolean placerNavire(Navire navire, int ligneDepart, int colDepart, boolean estHorizontal) {
