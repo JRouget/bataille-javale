@@ -14,6 +14,7 @@ public class GameManager {
     private List<TypeNavire> attentePlacement;
     private Navire bateauActuel;
 
+
     public GameManager() {
         this.playerGrid = new Grille();
         this.computerGrid = new Grille();
@@ -93,14 +94,13 @@ public class GameManager {
         }
 
     }
+
     public Grille getPlayerGrid() {
         return this.playerGrid;
     }
-
     public Grille getComputerGrid() {
         return this.computerGrid;
     }
-
     public Navire getBateauActuel() {
         return this.bateauActuel;
     }
