@@ -54,4 +54,20 @@ public class Grille {
 
         return true;
     }
+
+    public boolean recevoirTir(int ligne, int colonne) {
+        Case caseCible = plateau[ligne][colonne];
+
+        caseCible.setAEteTouchee(true);
+
+        if (!caseCible.estVide()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public Case getCase(int ligne, int colonne) {
+        return plateau[ligne][colonne];
+    }
 }

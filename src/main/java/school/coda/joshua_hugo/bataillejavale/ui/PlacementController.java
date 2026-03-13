@@ -1,11 +1,18 @@
 package school.coda.joshua_hugo.bataillejavale.ui;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+import school.coda.joshua_hugo.bataillejavale.HelloApplication;
 import school.coda.joshua_hugo.bataillejavale.map.Grille;
 import school.coda.joshua_hugo.bataillejavale.moteur.GameManager;
 import school.coda.joshua_hugo.bataillejavale.navires.Navire;
+
+import java.io.IOException;
 
 public class PlacementController {
 
@@ -62,16 +69,13 @@ public class PlacementController {
     }
 
     private void tenterPlacementBateau(int x, int y) {
-
         Navire navireAposer = gameManager.getBateauActuel();
 
         if (navireAposer == null) {
-            System.out.println("Tous les bateaux sont déjà placés !");
             return;
         }
 
         Grille grilleDuJoueur = gameManager.getPlayerGrid();
-
         boolean autorisation = grilleDuJoueur.placerNavire(navireAposer, y, x, estHorizontal);
 
         if (autorisation) {
@@ -84,8 +88,28 @@ public class PlacementController {
 
             gameManager.preparerProchainBateau();
 
-        } else {
-            System.out.println("Placement impossible ici !");
+            if (gameManager.getBateauActuel() == null) {
+                lancerBataille();
+            }
+        }
+    }
+
+    private void lancerBataille() {
+        gameManager.bateauOrdinateur();
+
+        try {
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("bataille.fxml"));
+            Parent root = loader.load();
+
+            BatailleController battleController = loader.getController();
+            battleController.setGameManager(this.gameManager);
+
+            Scene sceneBataille = new Scene(root, 1000, 600);
+            Stage stage = (Stage) grilleOcean.getScene().getWindow();
+            stage.setScene(sceneBataille);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

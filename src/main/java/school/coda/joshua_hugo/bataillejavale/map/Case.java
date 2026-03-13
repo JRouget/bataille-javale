@@ -23,4 +23,8 @@ public class Case {
     public void placerNavire(Navire n) {
         this.navireDessus = n;
     }
+
+    public void setAEteTouchee(boolean touchee) {
+        this.aEteTouchee = touchee;
+    }
 }
