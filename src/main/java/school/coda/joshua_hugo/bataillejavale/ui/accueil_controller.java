@@ -15,7 +15,7 @@ public class accueil_controller {
     @FXML
     protected void onNouvellePartieClick(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(BatailleJavaleApp.class.getResource("grid.fxml"));
-        Scene sceneDePlacement = new Scene(fxmlLoader.load(), 800, 600);
+        Scene sceneDePlacement = new Scene(fxmlLoader.load(), 800, 800);
 
         Stage fenetre = (Stage) ((Node) event.getSource()).getScene().getWindow();
         fenetre.setScene(sceneDePlacement);

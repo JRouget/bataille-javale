@@ -108,7 +108,7 @@ public class PlacementController {
             Parent root = loader.load();
             BatailleController battleController = loader.getController();
             battleController.setGameManager(this.gameManager);
-            Scene sceneBataille = new Scene(root, 1000, 700);
+            Scene sceneBataille = new Scene(root, 1000, 1000);
             Stage stage = (Stage) grilleOcean.getScene().getWindow();
             stage.setScene(sceneBataille);
             stage.setMaximized(true);
