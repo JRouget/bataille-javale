@@ -2,7 +2,9 @@ package school.coda.joshua_hugo.bataillejavale.ui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import school.coda.joshua_hugo.bataillejavale.map.Case;
 import school.coda.joshua_hugo.bataillejavale.moteur.GameManager;
 
@@ -16,6 +18,7 @@ public class BatailleController {
 
     private GameManager gameManager;
     private Button[][] boutonsJoueur = new Button[10][10];
+    private boolean partieTerminee = false;
 
     public void setGameManager(GameManager gm) {
         this.gameManager = gm;
@@ -61,7 +64,9 @@ public class BatailleController {
                 final int y = ligne;
 
                 caseRadar.setOnAction(event -> {
-                    tenterTir(x, y, caseRadar);
+                    if (!partieTerminee) {
+                        tenterTir(x, y, caseRadar);
+                    }
                 });
 
                 grilleRadar.add(caseRadar, colonne, ligne);
@@ -82,6 +87,12 @@ public class BatailleController {
             System.out.println("Vous avez tiré dans l'eau !");
         }
 
+        if (gameManager.getComputerGrid().sontTousCoules()) {
+            partieTerminee = true;
+            afficherEcranFin("VICTOIRE !", "#228B22");
+            return;
+        }
+
         tourDeLOrdinateur();
     }
 
@@ -99,5 +110,20 @@ public class BatailleController {
             boutonCible.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: #CCCCCC;");
             System.out.println("L'ordinateur a tiré dans l'eau !");
         }
+
+        if (gameManager.getPlayerGrid().sontTousCoules()) {
+            partieTerminee = true;
+            afficherEcranFin("DÉFAITE...", "#8B0000");
+        }
+    }
+
+    private void afficherEcranFin(String messageFin, String couleur) {
+        HBox conteneurPrincipal = (HBox) grilleJoueur.getParent();
+        conteneurPrincipal.getChildren().clear();
+
+        Label labelFin = new Label(messageFin);
+        labelFin.setStyle("-fx-font-size: 80px; -fx-font-weight: bold; -fx-text-fill: " + couleur + ";");
+
+        conteneurPrincipal.getChildren().add(labelFin);
     }
 }

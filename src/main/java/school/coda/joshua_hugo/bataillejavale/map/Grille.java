@@ -15,19 +15,14 @@ public class Grille {
                 plateau[ligne][colonne] = new Case();
             }
         }
-
     }
 
     public boolean estDejaTouchee(int ligne, int colonne) {
-        // trouve quelle case
         Case laCase = plateau[ligne][colonne];
-
-        // Si elle a été touché
         return laCase.isAEteTouchee();
     }
 
     public boolean placerNavire(Navire navire, int ligneDepart, int colDepart, boolean estHorizontal) {
-
         int taille = navire.getType().getTaille();
 
         if (estHorizontal) {
@@ -69,5 +64,17 @@ public class Grille {
 
     public Case getCase(int ligne, int colonne) {
         return plateau[ligne][colonne];
+    }
+
+    public boolean sontTousCoules() {
+        for (int ligne = 0; ligne < TAILLE; ligne++) {
+            for (int colonne = 0; colonne < TAILLE; colonne++) {
+                Case c = plateau[ligne][colonne];
+                if (!c.estVide() && !c.isAEteTouchee()) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
