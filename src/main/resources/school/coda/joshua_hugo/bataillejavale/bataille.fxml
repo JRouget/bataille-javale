@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Label?>
 <?import javafx.geometry.Insets?>
 
-<HBox alignment="CENTER" spacing="50.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="school.coda.joshua_hugo.bataillejavale.ui.BatailleController">
+<VBox alignment="CENTER" spacing="40.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="school.coda.joshua_hugo.bataillejavale.ui.BatailleController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
-    <GridPane fx:id="grilleJoueur" alignment="CENTER" hgap="2" vgap="2" />
+    <Label fx:id="labelHistorique" text="La bataille commence ! À vous de tirer." style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333333;"/>
 
-    <GridPane fx:id="grilleRadar" alignment="CENTER" hgap="2" vgap="2" />
+    <HBox alignment="CENTER" spacing="60.0">
 
-</HBox>
+        <VBox alignment="CENTER" spacing="10.0">
+            <Label text="Votre Flotte" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #000080;" />
+            <GridPane fx:id="grilleJoueur" alignment="CENTER" hgap="2" vgap="2" />
+        </VBox>
+
+        <VBox alignment="CENTER" spacing="10.0">
+            <Label text="Radar Ennemi" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #8B0000;" />
+            <GridPane fx:id="grilleRadar" alignment="CENTER" hgap="2" vgap="2" />
+        </VBox>
+
+    </HBox>
+
+</VBox>

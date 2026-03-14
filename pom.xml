@@ -76,7 +76,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                school.coda.joshua_hugo.bataillejavale/school.coda.joshua_hugo.bataillejavale.HelloApplication
+                                school.coda.joshua_hugo.bataillejavale/school.coda.joshua_hugo.bataillejavale.BatailleJavaleApp
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

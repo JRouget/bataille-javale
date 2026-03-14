@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import school.coda.joshua_hugo.bataillejavale.HelloApplication;
+import school.coda.joshua_hugo.bataillejavale.BatailleJavaleApp;
 import school.coda.joshua_hugo.bataillejavale.map.Grille;
 import school.coda.joshua_hugo.bataillejavale.moteur.GameManager;
 import school.coda.joshua_hugo.bataillejavale.navires.Navire;
@@ -98,7 +98,7 @@ public class PlacementController {
         gameManager.bateauOrdinateur();
 
         try {
-            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("bataille.fxml"));
+            FXMLLoader loader = new FXMLLoader(BatailleJavaleApp.class.getResource("bataille.fxml"));
             Parent root = loader.load();
 
             BatailleController battleController = loader.getController();
