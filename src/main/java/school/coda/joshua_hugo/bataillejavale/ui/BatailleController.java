@@ -28,7 +28,6 @@ public class BatailleController {
 
     private void dessinerGrilleJoueur() {
         int tailleGrille = 10;
-
         for (int ligne = 0; ligne < tailleGrille; ligne++) {
             for (int colonne = 0; colonne < tailleGrille; colonne++) {
 
@@ -36,12 +35,12 @@ public class BatailleController {
                 caseJoueur.setPrefSize(40, 40);
                 caseJoueur.setDisable(true);
 
+                caseJoueur.getStyleClass().add("case-ocean");
+
                 Case casePlateau = gameManager.getPlayerGrid().getCase(ligne, colonne);
 
                 if (!casePlateau.estVide()) {
-                    caseJoueur.setStyle("-fx-background-color: #808080; -fx-border-color: #333333;");
-                } else {
-                    caseJoueur.setStyle("-fx-background-color: #ADD8E6; -fx-border-color: #87CEEB;");
+                    caseJoueur.getStyleClass().add("case-navire");
                 }
 
                 boutonsJoueur[ligne][colonne] = caseJoueur;
@@ -52,13 +51,14 @@ public class BatailleController {
 
     private void dessinerGrilleRadar() {
         int tailleGrille = 10;
-
         for (int ligne = 0; ligne < tailleGrille; ligne++) {
             for (int colonne = 0; colonne < tailleGrille; colonne++) {
 
                 Button caseRadar = new Button();
                 caseRadar.setPrefSize(40, 40);
-                caseRadar.setStyle("-fx-background-color: #000080; -fx-border-color: #4169E1;");
+
+                // Style radar
+                caseRadar.getStyleClass().add("case-ocean");
 
                 final int x = colonne;
                 final int y = ligne;
@@ -76,20 +76,19 @@ public class BatailleController {
 
     private void tenterTir(int x, int y, Button boutonClique) {
         boutonClique.setDisable(true);
-
         boolean estTouche = gameManager.getComputerGrid().recevoirTir(y, x);
 
         if (estTouche) {
-            boutonClique.setStyle("-fx-background-color: #FF0000; -fx-border-color: #8B0000;");
+            boutonClique.getStyleClass().add("case-touche");
             System.out.println("Vous avez touché un navire ennemi !");
         } else {
-            boutonClique.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: #CCCCCC;");
+            boutonClique.getStyleClass().add("case-eau");
             System.out.println("Vous avez tiré dans l'eau !");
         }
 
         if (gameManager.getComputerGrid().sontTousCoules()) {
             partieTerminee = true;
-            afficherEcranFin("VICTOIRE !", "#228B22");
+            afficherEcranFin("VICTOIRE !", "#00FF41"); // Vert Néon
             return;
         }
 
@@ -104,16 +103,16 @@ public class BatailleController {
         Button boutonCible = boutonsJoueur[ligneTir][colonneTir];
 
         if (botTouche) {
-            boutonCible.setStyle("-fx-background-color: #FF8C00; -fx-border-color: #8B0000;");
+            boutonCible.getStyleClass().add("bot-touche");
             System.out.println("L'ordinateur a touché votre navire !");
         } else {
-            boutonCible.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: #CCCCCC;");
+            boutonCible.getStyleClass().add("case-eau");
             System.out.println("L'ordinateur a tiré dans l'eau !");
         }
 
         if (gameManager.getPlayerGrid().sontTousCoules()) {
             partieTerminee = true;
-            afficherEcranFin("DÉFAITE...", "#8B0000");
+            afficherEcranFin("DÉFAITE...", "#E63946"); // Rouge Alerte
         }
     }
 
@@ -122,7 +121,8 @@ public class BatailleController {
         conteneurPrincipal.getChildren().clear();
 
         Label labelFin = new Label(messageFin);
-        labelFin.setStyle("-fx-font-size: 80px; -fx-font-weight: bold; -fx-text-fill: " + couleur + ";");
+        labelFin.getStyleClass().add("label-fin");
+        labelFin.setStyle("-fx-text-fill: " + couleur + ";");
 
         conteneurPrincipal.getChildren().add(labelFin);
     }

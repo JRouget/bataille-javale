@@ -1,0 +1,118 @@
+.main-container {
+    -fx-background-color: #050A14;
+    -fx-padding: 80;
+}
+
+.titre-accent {
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-size: 20px;
+    -fx-text-fill: rgba(255, 255, 255, 0.6);
+    -fx-letter-spacing: 12px;
+}
+
+.titre-principal {
+    -fx-font-family: "Segoe UI Bold", "Arial Black", sans-serif;
+    -fx-font-size: 70px;
+    -fx-text-fill: white;
+    -fx-letter-spacing: 15px;
+    -fx-padding: -10 0 0 0;
+}
+
+.separator-honneur {
+    -fx-min-height: 3;
+    -fx-max-height: 3;
+    -fx-min-width: 80;
+    -fx-max-width: 80;
+    -fx-background-color: #E63946;
+}
+
+.button-command {
+    -fx-background-color: white;
+    -fx-text-fill: #050A14;
+    -fx-font-family: "Segoe UI Bold", sans-serif;
+    -fx-font-size: 14px;
+    -fx-letter-spacing: 4px;
+    -fx-padding: 18 60;
+    -fx-background-radius: 2;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 15, 0, 0, 8);
+}
+
+.button-command:hover {
+    -fx-background-color: #E63946;
+    -fx-text-fill: white;
+    -fx-translate-y: -2;
+    -fx-effect: dropshadow(three-pass-box, rgba(230, 57, 70, 0.4), 25, 0, 0, 10);
+}
+
+.footer {
+    -fx-padding: 80 0 0 0;
+}
+
+.footer-label {
+    -fx-font-size: 9px;
+    -fx-text-fill: rgba(255, 255, 255, 0.4);
+    -fx-letter-spacing: 4px;
+}
+
+.footer-names {
+    -fx-font-size: 12px;
+    -fx-text-fill: white;
+    -fx-letter-spacing: 2px;
+}
+
+.main-container { -fx-background-color: #050A14; -fx-padding: 20; }
+
+.phase-title { -fx-font-family: "Segoe UI Bold"; -fx-font-size: 22px; -fx-text-fill: white; -fx-letter-spacing: 4px; }
+
+.separator-honneur { -fx-min-height: 2; -fx-max-height: 2; -fx-max-width: 60; -fx-background-color: #E63946; }
+
+.grid-tactique { -fx-hgap: 2; -fx-vgap: 2; }
+
+.case-ocean {
+    -fx-min-width: 45; -fx-max-width: 45; -fx-min-height: 45; -fx-max-height: 45;
+    -fx-background-color: rgba(28, 37, 65, 0.6);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-color: rgba(255, 255, 255, 0.1);
+}
+
+.case-navire {
+    -fx-background-color: white;
+    -fx-background-insets: 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(255, 255, 255, 0.4), 10, 0, 0, 0);
+}
+
+.proue-v { -fx-background-radius: 40 40 0 0; }
+.poupe-v { -fx-background-radius: 0 0 15 15; }
+.proue-h { -fx-background-radius: 40 0 0 40; }
+.poupe-h { -fx-background-radius: 0 15 15 0; }
+.corps { -fx-background-radius: 0; }
+
+.button-toggle {
+    -fx-background-color: transparent; -fx-border-color: white; -fx-text-fill: white;
+    -fx-font-family: "Segoe UI Bold"; -fx-padding: 10 30; -fx-cursor: hand;
+}
+
+.case-eau {
+    -fx-background-color: rgba(255, 255, 255, 0.3);
+    -fx-background-insets: 10;
+    -fx-background-radius: 50;
+}
+
+.case-touche {
+    -fx-background-color: #E63946;
+    -fx-effect: dropshadow(three-pass-box, #E63946, 15, 0, 0, 0);
+    -fx-background-insets: 0;
+}
+
+.bot-touche {
+    -fx-background-color: #FF8C00;
+    -fx-effect: innershadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0);
+}
+
+.grid-tactique {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-padding: 10;
+    -fx-border-color: rgba(255, 255, 255, 0.1);
+}
